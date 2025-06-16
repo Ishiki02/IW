@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html,body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: cyan;
+        }
+        .form-fundo {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-login, .form-cadastro {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input{
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px
+        }
+        .btn_1, .btn_2{
+            width: 100%;
+            padding: 12px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .btn_1 {
+            background-color: #4caf50;
+        }
+        .btn_1:hover {
+            background-color: #45A849;
+        }
+        .btn_2 {
+            background-color: #1283F5;
+        }
+        .btn_2:hover {
+            background-color: #006ad3;
+        }
+        </style>
+</head>
+<form>
+<div class="form-fundo">
+    <div class="form-login">
+        <h2>Login</h2>
+        <form id="loginform"></form>
+        <label for="email">E-mail</label>   
+        <input type="email" id="email" name="ema\il" placeholder="xxxxxxx@gmail.com" required /> 
+        <label for="senha">Senha</label>
+        <input type="password" id="senha " name="senha" placeholder="senhasuperforte****" required />
+
+        <button type="submit">Entrar</button>
+    </form>
+    </div> 
+</div>  
+<body>
+    
+</body>
+</html>
