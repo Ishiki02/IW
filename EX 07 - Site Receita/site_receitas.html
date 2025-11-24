@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Receitas do Estado — Sobremesas, Restaurantes e Curiosidades</title>
+<style>
+  :root{
+    --red:#d83b3b;
+    --dark-red:#b30000;
+    --card-radius:18px;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: #ffffff;
+    color:#111;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  header{
+    background: linear-gradient(90deg,var(--red),var(--dark-red));
+    color:white;
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  header .brand{
+    font-weight:700;
+    letter-spacing:0.6px;
+  }
+
+  nav{
+    display:flex;
+    gap:12px;
+  }
+
+  nav a{
+    color:rgba(255,255,255,0.95);
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:14px;
+  }
+
+  nav a.active, nav a:hover{
+    background: rgba(255,255,255,0.12);
+  }
+
+  main{
+    max-width:var(--maxw);
+    margin:30px auto;
+    padding:0 18px 80px;
+  }
+
+  /* card frame like in example */
+  .frame{
+    background: linear-gradient(to bottom, rgba(216,59,59,0.95), rgba(179,0,0,0.95));
+    padding:26px;
+    border-radius:28px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .panel{
+    background:white;
+    width:100%;
+    max-width:820px;
+    border-radius:16px;
+    padding:26px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+
+  h1.section-title{
+    text-align:center;
+    color:var(--dark-red);
+    margin:0 0 8px;
+  }
+
+  p.lead{
+    text-align:center;
+    color:#333;
+    margin-top:6px;
+    margin-bottom:18px;
+    line-height:1.45;
+  }
+
+  /* grid for 4 cards */
+  .grid-2{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:22px;
+    margin-top:18px;
+  }
+
+  .card{
+    border-radius:14px;
+    background: linear-gradient(180deg, #ffefef, #fff);
+    padding:14px;
+    text-align:center;
+    border:1px solid #eee;
+  }
+
+  .card .imgwrap{
+    background:#f6f6f6;
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:150px;
+  }
+
+  .card img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:8px;
+    object-fit:cover;
+  }
+
+  .card h3{ margin:6px 0 0; color:var(--red); font-size:16px; }
+  .card p{ margin:6px 0 0; color:#444; font-size:13px; }
+
+  /* table style for sobremesas page */
+  .food-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+  }
+  .food-table td, .food-table th{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+    vertical-align:middle;
+  }
+  .food-table th{
+    background:#fafafa;
+    color:var(--dark-red);
+    font-weight:700;
+  }
+
+  /* restaurants list */
+  .rest-list{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:16px;
+    margin-top:12px;
+  }
+  .rest{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #eee;
+    background:white;
+  }
+  .rest .mini{
+    width:84px;
+    height:64px;
+    border-radius:8px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fafafa;
+  }
+  .rest .mini img{ width:72px; height:56px; object-fit:cover; }
+
+  .rest h4{ margin:0; color:var(--red); }
+  .rest p{ margin:4px 0 0; font-size:13px; color:#555; }
+
+  /* curiosities */
+  .curio-list{ margin-top:12px; display:flex; flex-direction:column; gap:10px; }
+  .curio{ padding:12px; border-radius:10px; background:#fff; border:1px solid #efefef; }
+
+  footer{
+    text-align:center;
+    color:#666;
+    padding:18px 8px;
+    font-size:14px;
+    margin-top:30px;
+  }
+
+  /* responsive */
+  @media (max-width:800px){
+    .grid-2, .rest-list{ grid-template-columns: 1fr; }
+    .frame{ padding:18px; }
+    .panel{ padding:18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">COMIDAS DO NOSSO ESTADO</div>
+  <nav>
+    <a href="#/sobremesas" id="link-sob">Sobremesas</a>
+    <a href="#/restaurantes" id="link-rest">Principais restaurantes</a>
+    <a href="#/curiosidades" id="link-cur">Curiosidades</a>
+  </nav>
+</header>
+
+<main>
+  <!-- container frame -->
+  <div class="frame">
+    <section class="panel" id="page-sobremesas" style="display:none;">
+      <h1 class="section-title">Sobremesas Típicas</h1>
+      <p class="lead">Algumas das sobremesas mais famosas do Estado — receitas, imagens e pequenas descrições.</p>
+
+      <table class="food-table" role="table" aria-label="Tabela de sobremesas">
+        <tr>
+          <th>Imagem</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+        </tr>
+        <tr>
+          <td><img src="7a2e17cda187df76b78cfd3ac464 (1).jpg" alt="Pudim" style="width:120px;height:80px;object-fit:cover;border-radius:6px"></td>
+          <td>Pudim de Leite</td>
+          <td>Clássico cremoso com calda de caramelo — receita simples com poucos ingredientes.</td>
+        </tr>
+        <tr>
+          <td><img src="5003d452a8da016f3ed02a6385cf54e8_XL.jpg" alt="Brigadeiro" style="width:120px;height:80px;object-fit:cover;border-radius:6px"></td>
+          <td>Brigadeiro</td>
+          <td>Docinho de leite condensado e cacau, enrolado e coberto com granulado.</td>
+        </tr>
+        <tr>
+          <td><img src="Torta-Mil-Folhas-01-1200x676.jpg" alt="Mil folhas" style="width:120px;height:80px;object-fit:cover;border-radius:6px"></td>
+          <td>Mil folhas de doce de leite</td>
+          <td>Camadas folhadas com doce de leite — crocante e doce.</td>
+        </tr>
+      </table>
+
+      <div style="margin-top:18px">
+        <h3 style="color:var(--red)">Receita rápida — Pudim de Leite</h3>
+        <p style="color:#444">Ingredientes: 1 lata de leite condensado, 2 medidas (da lata) de leite, 3 ovos. Bata tudo, asse em banho-maria por 50 minutos. Desenforme quando frio.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="page-restaurantes" style="display:none;">
+      <h1 class="section-title">Principais Restaurantes</h1>
+      <p class="lead">Locais conhecidos onde você pode provar pratos típicos da região.</p>
+
+      <div class="rest-list">
+        <div class="rest">
+          <div class="mini"><img src="M4HUQFDZX5OVLCV4EGPWYNSVTA.jpg" alt="Mapa"></div>
+          <div>
+            <h4>Bar da Dona Onça</h4>
+            <p>Restaurante tradicional com pratos paulistas clássicos. Endereço: Centro — SP.</p>
+          </div>
+        </div>
+
+        <div class="rest">
+          <div class="mini"><img src="img_1.jpg" alt="Mapa"></div>
+          <div>
+            <h4>Pé Pra Fora</h4>
+            <p>Cozinha contemporânea com ingredientes locais — destaque para sobremesas.</p>
+          </div>
+        </div>
+
+        <div class="rest">
+          <div class="mini"><img src="milfolhasPinheirosVrs.jpg" alt="Mapa"></div>
+          <div>
+            <h4>Mil Confeitaria</h4>
+            <p>Famosa por doces finos e bolos artesanais — ótimo para quem ama sobremesas.</p>
+          </div>
+        </div>
+
+        <div class="rest">
+          <div class="mini"><img src="images.jpg" alt="Mapa"></div>
+          <div>
+            <h4>Bar do Mané</h4>
+            <p>Boteco com sanduíches típicos e ambiente descontraído.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="panel" id="page-curiosidades" style="display:none;">
+      <h1 class="section-title">Curiosidades</h1>
+      <p class="lead">Fatos interessantes sobre a culinária e as tradições locais.</p>
+
+      <div class="curio-list">
+        <div class="curio">
+          <strong>1.</strong> O brigadeiro surgiu nas festas brasileiras como um doce simples e se tornou símbolo nacional.
+        </div>
+        <div class="curio">
+          <strong>2.</strong> O sanduíche de mortadela ganhou fama por grandes porções servidas em mercados tradicionais.
+        </div>
+        <div class="curio">
+          <strong>3.</strong> O "virado à paulista" era originalmente uma refeição de trabalhadores, rica em energia e fácil de preparar.
+        </div>
+        <div class="curio">
+          <strong>4.</strong> Muitas confeitarias locais mantêm receitas passadas de geração em geração — tradição forte na cultura doceira.
+        </div>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Comidas do Nosso Estado — site de receitas e curiosidades
+</footer>
+
+<script>
+  // Simple hash routing to show the three pages in one HTML file
+  const routes = {
+    '/sobremesas': 'page-sobremesas',
+    '/restaurantes': 'page-restaurantes',
+    '/curiosidades': 'page-curiosidades'
+  };
+
+  function showPage(hash){
+    const path = hash.replace('#','') || '/sobremesas';
+    const pageId = routes[path] || 'page-sobremesas';
+    // hide all
+    Object.values(routes).forEach(id => {
+      document.getElementById(id).style.display = 'none';
+    });
+    // show chosen
+    document.getElementById(pageId).style.display = 'block';
+    // update active nav
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('href') === '#'+path);
+    });
+  }
+
+  window.addEventListener('hashchange', ()=> showPage(location.hash));
+  // initial
+  if(!location.hash) location.hash = '/sobremesas';
+  showPage(location.hash);
+</script>
+
+</body>
+</html>
